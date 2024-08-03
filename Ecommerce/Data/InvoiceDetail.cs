@@ -12,7 +12,7 @@ namespace Ecommerce.Data
         public int Quantity { get; set; }
         [Range(0, double.MaxValue)]
         public double Price { get; set; }
-        //public Invoice Invoice { get; set; } = null!;
-        //public ICollection<Product> Products { get; set; } = null!;
+        public Invoice Invoice { get; set; } = null!;
+        public ICollection<Product> Products { get; set; } = null!;
     }
 }

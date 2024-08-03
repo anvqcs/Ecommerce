@@ -14,7 +14,7 @@ namespace Ecommerce.Data
         public string? PhoneNumber { get; set; }
         [MaxLength(250)]
         public string? Address { get; set; }
-        ////public ICollection<Product> Products { get; set; } = new List<Product>();
-        //public ICollection<Invoice> Invoices { get; set; } = new List<Invoice>();
+        //public ICollection<Product> Products { get; set; } = new List<Product>();
+        public ICollection<Invoice> Invoices { get; set; } = new List<Invoice>();
     }
 }

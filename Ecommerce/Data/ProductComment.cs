@@ -21,6 +21,6 @@ namespace Ecommerce.Data
         public int UpdatedBy { get; set; }
         [Column(TypeName = "datetime")]
         public DateTime UpdatedDate { get; set; }
-        //public Product Product { get; set; } = null!;
+        public Product Product { get; set; } = null!;
     }
 }

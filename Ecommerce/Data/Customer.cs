@@ -24,6 +24,6 @@ namespace Ecommerce.Data
         public string? Image {  get; set; }
         public bool Validity { get; set; }
         public int Role {  get; set; }
-        //public ICollection<Order> Orders { get; set; } = null!;
+        public ICollection<Order> Orders { get; set; } = null!;
     }
 }

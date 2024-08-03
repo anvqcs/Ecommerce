@@ -18,7 +18,7 @@ namespace Ecommerce.Data
         public int DeleteBy { get; set; }
         [Column(TypeName = "datetime")]
         public DateTime DeleteDate { get; set; }
-        //public Supplier Supplier { get; set; } = null!;
-        //public InvoiceDetail? InvoiceDetail { get; set; }
+        public Supplier Supplier { get; set; } = null!;
+        public InvoiceDetail? InvoiceDetail { get; set; }
     }
 }

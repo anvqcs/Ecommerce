@@ -45,11 +45,11 @@ namespace Ecommerce.Data
         public int UpdatedBy { get; set; }
         [Column(TypeName = "datetime")]
         public DateTime UpdatedDate { get; set; }
-        //public ProductCategory ProductCategory { get; set; } = null!;
-        //public Brand Brand { get; set; } = null!;
-        ////public Supplier Supplier { get; set; } = null!;
-        //public InvoiceDetail InvoiceDetail { get; set; } = null!;
-        //public OrderDetail OrderDetail { get; set; } = null!;
-        //public ICollection<ProductComment> ProductComments { get; set; } = new List<ProductComment>();
+        public ProductCategory ProductCategory { get; set; } = null!;
+        public Brand Brand { get; set; } = null!;
+        //public Supplier Supplier { get; set; } = null!;
+        public InvoiceDetail InvoiceDetail { get; set; } = null!;
+        public OrderDetail OrderDetail { get; set; } = null!;
+        public ICollection<ProductComment> ProductComments { get; set; } = new List<ProductComment>();
     }
 }

@@ -13,8 +13,8 @@ namespace Ecommerce.Data
         public int CustomerId { get; set; }
         [Range(0, int.MaxValue)]
         public int Discount { get; set; }
-        //public Customer Customer { get; set; } = null!;
-        //public ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
+        public Customer Customer { get; set; } = null!;
+        public ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
 
     }
 }

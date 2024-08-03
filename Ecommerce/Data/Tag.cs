@@ -9,6 +9,6 @@ namespace Ecommerce.Data
         public required string TagId { get; set; }
         [MaxLength(250)]
         public string? Title { get; set; }
-        //public ICollection<PostTag> PostTags { get; set; } = new List<PostTag>();
+        public ICollection<PostTag> PostTags { get; set; } = new List<PostTag>();
     }
 }

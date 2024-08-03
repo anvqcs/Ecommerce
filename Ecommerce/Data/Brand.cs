@@ -8,6 +8,6 @@ namespace Ecommerce.Data
         public int BrandId { get; set; }
         [MaxLength(250)]
         public string? Name { get; set; }
-        //public ICollection<Product> Products { get; set; } = new List<Product>();
+        public ICollection<Product> Products { get; set; } = new List<Product>();
     }
 }

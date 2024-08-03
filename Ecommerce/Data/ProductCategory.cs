@@ -24,6 +24,6 @@ namespace Ecommerce.Data
         public int UpdatedBy { get; set; }
         [Column(TypeName = "datetime")]
         public DateTime UpdatedDate { get; set; }
-        //public ICollection<Product> Products { get; set; } = new List<Product>();
+        public ICollection<Product> Products { get; set; } = new List<Product>();
     }
 }

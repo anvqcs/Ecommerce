@@ -31,8 +31,8 @@ namespace Ecommerce.Data
         public int UpdatedBy { get; set; }
         [Column(TypeName = "datetime")]
         public DateTime UpdatedDate { get; set; }
-        //public PostCategory PostCategory { get; set; } = null!;
-        //public ICollection<PostComment> PostComments { get; set; } = new List<PostComment>();
-        //public ICollection<PostTag> PostTags { get; set; } = new List<PostTag>();
+        public PostCategory PostCategory { get; set; } = null!;
+        public ICollection<PostComment> PostComments { get; set; } = new List<PostComment>();
+        public ICollection<PostTag> PostTags { get; set; } = new List<PostTag>();
     }
 }
