@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using static NuGet.Packaging.PackagingConstants;
 
 namespace Ecommerce.Data
 {
