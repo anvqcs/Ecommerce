@@ -9,6 +9,7 @@ using System.Security.Claims;
 
 namespace Ecommerce.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         private readonly IAdminRepository _adminRepository;
@@ -106,7 +107,6 @@ namespace Ecommerce.Controllers
             }
         }
 
-        [HttpPost]
         public async Task<IActionResult> DeleteUser(string UserId)
         {
             //First Fetch the User you want to Delete
@@ -245,7 +245,6 @@ namespace Ecommerce.Controllers
             return View(model);
 
         }
-        [HttpPost]
         public async Task<IActionResult> DeleteRole(string roleId)
         {
             var role = await _roleManager.FindByIdAsync(roleId);
@@ -259,14 +258,14 @@ namespace Ecommerce.Controllers
             if (result.Succeeded)
             {
                 // Role deletion successful
-                return RedirectToAction("ListRoles"); // Redirect to the roles list page
+                return RedirectToAction("Roles"); // Redirect to the roles list page
             }
             foreach (var error in result.Errors)
             {
                 ModelState.AddModelError("", error.Description);
             }
             // If we reach here, something went wrong, return to the view
-            return View("ListRoles", await _roleManager.Roles.ToListAsync());
+            return View("Roles", await _roleManager.Roles.ToListAsync());
         }
         [HttpGet]
         public async Task<IActionResult> EditUsersInRole(string roleId)

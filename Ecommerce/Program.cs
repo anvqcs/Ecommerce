@@ -29,6 +29,13 @@ namespace Ecommerce
             })
             .AddEntityFrameworkStores<EcommerceContext>();
 
+            builder.Services.ConfigureApplicationCookie(options =>
+            {
+                // If the LoginPath isn't set, ASP.NET Core defaults the path to /Account/Login.
+                options.LoginPath = "/Account/Login"; // Set your login path here
+                options.AccessDeniedPath = "/Account/AccessDenied";
+            });
+
             // Register repositories
             builder.Services.AddScoped<IAccountRepository, AccountRepository>();
             builder.Services.AddScoped<IAdminRepository, AdminRepository>();
