@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using NuGet.Protocol.Core.Types;
+using System.Data;
 
 namespace Ecommerce.Controllers
 {
@@ -13,11 +14,13 @@ namespace Ecommerce.Controllers
         private readonly IAccountRepository _accountRepository;
         private readonly SignInManager<User> _signInManager;
         private readonly UserManager<User> _userManager;
+        private readonly RoleManager<Role> _roleManager;
 
-        public AccountController(IAccountRepository accountRepository, SignInManager<User> signInManager, UserManager<User> userManager) {
+        public AccountController(IAccountRepository accountRepository, SignInManager<User> signInManager, UserManager<User> userManager, RoleManager<Role> roleManager) {
             _accountRepository = accountRepository;
             _signInManager = signInManager;
             _userManager = userManager;
+            _roleManager = roleManager;
         }
         [HttpGet]
         public IActionResult Register()
@@ -33,11 +36,10 @@ namespace Ecommerce.Controllers
                 var result = await _accountRepository.RegisterAsync(model);
                 if (result.Succeeded)
                 {
-                    if (_signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
-                    {
-                        return RedirectToAction("ListUsers", "Administration");
-                    }
-                    var user = new User { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName };
+                    bool roleExists = await _roleManager.RoleExistsAsync("Customer");
+                    var user = await _userManager.FindByEmailAsync(model.Email);
+                    if (roleExists)
+                        await _userManager.AddToRoleAsync(user, "Customer");
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index", "Home");
                 }
@@ -93,7 +95,6 @@ namespace Ecommerce.Controllers
             return View(model);
         }
         [Authorize]
-        [HttpPost]
         public async Task<IActionResult> Logout()
         {
             await _accountRepository.SignOutAsync();

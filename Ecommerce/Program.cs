@@ -31,6 +31,7 @@ namespace Ecommerce
 
             // Register repositories
             builder.Services.AddScoped<IAccountRepository, AccountRepository>();
+            builder.Services.AddScoped<IAdminRepository, AdminRepository>();
 
             var app = builder.Build();
 
