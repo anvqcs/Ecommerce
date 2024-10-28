@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Ecommerce.Models.ViewModel
+namespace Ecommerce.Models.ViewModel.Admin
 {
     public class EditUserViewModel
     {
@@ -16,7 +16,7 @@ namespace Ecommerce.Models.ViewModel
         public string? FirstName { get; set; }
         [Display(Name = "Last Name")]
         public string? LastName { get; set; }
-        public List<string> Claims { get; set; } = new List<string>();  
-        public IList<string> Roles { get; set; } = new List<string>();  
+        public List<string> Claims { get; set; } = new List<string>();
+        public IList<string> Roles { get; set; } = new List<string>();
     }
 }

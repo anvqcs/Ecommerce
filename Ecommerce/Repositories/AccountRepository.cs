@@ -1,5 +1,5 @@
 ﻿using Ecommerce.Models.Entities.Identity;
-using Ecommerce.Models.ViewModel;
+using Ecommerce.Models.ViewModel.Account;
 using Microsoft.AspNetCore.Identity;
 
 namespace Ecommerce.Repositories

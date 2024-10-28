@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Ecommerce.Models.ViewModel
+namespace Ecommerce.Models.ViewModel.Admin
 {
     public class CreateRoleViewModel
     {

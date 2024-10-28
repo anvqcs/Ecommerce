@@ -1,0 +1,31 @@
+﻿@model Ecommerce.Models.ViewModel.ProductCategory.ProductCategoryViewModel
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-sm-12 col-xl-6">
+    <div class="rounded h-100 p-4">
+        <h6 class="mb-4">Product Category</h6>
+        <form asp-action="Update" method="post">
+            <input type="hidden" asp-for="ProductCategoryId" />
+            <div class="mb-3">
+                <label class="form-label" asp-for="Name"></label>
+                <input class="form-control" asp-for="Name" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" asp-for="Description"></label>
+                <input class="form-control" asp-for="Description" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" asp-for="Sort"></label>
+                <input class="form-control" asp-for="Sort" />
+                <span asp-validation-for="Sort" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+    </div>
+</div>
+

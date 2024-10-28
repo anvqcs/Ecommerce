@@ -1,0 +1,76 @@
+﻿@model IEnumerable<ProductCategory>
+
+@{
+    ViewBag.Title = "All Users";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@if (Model.Any())
+{
+    <div class="col-12">
+        <div class="rounded h-100 p-4">
+            <h6 class="mb-4">All Users</h6>
+            <div class="btn-group" role="group">
+                <a class="btn btn-primary mb-3" style="width:auto" asp-action="Create" asp-controller="ProductCategory">Create New</a>
+            </div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Sort</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Select((x, i) => new { Value = x, Index = i }))
+                    {
+                        <tr>
+                            <th scope="row">@(item.Index + 1)</th>
+                            <td>@item.Value.Name</td>
+                            <td>@item.Value.Sort</td>
+                            <td>
+                                <a class="btn btn-primary" asp-controller="ProductCategory" asp-action="Update" asp-route-ProductCategoryId="@item.Value.ProductCategoryId">Edit</a>
+                                <span id="confirmDeleteSpan_@item.Value.ProductCategoryId" style="display:none">
+                                    <span>Are you sure you want to Delete?</span>
+                                    <a class="btn btn-danger" asp-controller="ProductCategory" asp-action="Delete" asp-route-ProductCategoryId="@item.Value.ProductCategoryId">Yes</a>
+                                    <a href="#" class="btn btn-primary" onclick="confirmDelete('@item.Value.ProductCategoryId', false)">No</a>
+                                </span>
+
+                                <span id="deleteSpan_@item.Value.ProductCategoryId">
+                                    <a href="#" class="btn btn-danger" onclick="confirmDelete('@item.Value.ProductCategoryId', true)">Delete</a>
+                                </span>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+else
+{
+    <div class="card">
+        <div class="card-header">
+            No product category created yet
+        </div>
+        <div class="card-body">
+            <h6 class="card-title">
+                Use the button below to create a role
+            </h6>
+            <a class="btn btn-primary mb-3" style="width:auto" asp-action="Create" asp-controller="ProductCategory">Create New</a>
+        </div>
+    </div>
+}
+<script>
+    function confirmDelete(uniqueId, isDeleteClicked) {
+        var deleteSpan = 'deleteSpan_' + uniqueId;
+        var confirmDeleteSpan = 'confirmDeleteSpan_' + uniqueId;
+        if (isDeleteClicked) {
+            $('#' + deleteSpan).hide();
+            $('#' + confirmDeleteSpan).show();
+        } else {
+            $('#' + deleteSpan).show();
+            $('#' + confirmDeleteSpan).hide();
+        }
+    }
+</script>

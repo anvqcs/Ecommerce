@@ -1,4 +1,4 @@
-﻿namespace Ecommerce.Models.ViewModel
+﻿namespace Ecommerce.Models.ViewModel.Admin
 {
     public class UserRolesViewModel
     {
