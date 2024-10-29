@@ -7,7 +7,7 @@
 {
     <div class="col-12">
         <div class="rounded h-100 p-4">
-            <h6 class="mb-4">All Users</h6>
+            <h6 class="mb-4">Product</h6>
             <div class="btn-group" role="group">
                 <a class="btn btn-primary mb-3" style="width:auto" asp-action="Create" asp-controller="Product">Create New</a>
             </div>
@@ -28,7 +28,7 @@
                             <td>@item.Value.Name</td>
                             <td>@item.Value.Description</td>
                             <td>
-                                <a class="btn btn-primary" asp-controller="Product" asp-action="Update" asp-route-ProductId="@item.Value.ProductId">Edit</a>
+                                <a class="btn btn-primary" asp-controller="Product" asp-action="Edit" asp-route-ProductId="@item.Value.ProductId">Edit</a>
                                 <span id="confirmDeleteSpan_@item.Value.ProductId" style="display:none">
                                     <span>Are you sure you want to Delete?</span>
                                     <a class="btn btn-danger" asp-controller="Product" asp-action="Delete" asp-route-ProductId="@item.Value.ProductId">Yes</a>
@@ -50,11 +50,11 @@ else
 {
     <div class="card">
         <div class="card-header">
-            No product category created yet
+            No product created yet
         </div>
         <div class="card-body">
             <h6 class="card-title">
-                Use the button below to create a role
+                Use the button below to create a product
             </h6>
             <a class="btn btn-primary mb-3" style="width:auto" asp-action="Create" asp-controller="Product">Create New</a>
         </div>

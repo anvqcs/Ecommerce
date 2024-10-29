@@ -41,8 +41,7 @@
                                     <a class="dropdown-item" asp-controller="Account" asp-action="Logout">Logout</a>
                                     @if (User.IsInRole("Admin"))
                                     {
-                                        <a class="dropdown-item" asp-controller="Admin" asp-action="Users">Users</a>
-                                        <a class="dropdown-item" asp-controller="Admin" asp-action="Roles">Roles</a>
+                                        <a class="dropdown-item" asp-controller="Admin" asp-action="Users">Administration</a>
                                     }
                                 </ul>
                             </li>

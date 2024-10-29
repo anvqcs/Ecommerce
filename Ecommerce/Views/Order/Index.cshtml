@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Order>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@if (Model.Any())
+{
+    <div class="col-12">
+        <div class="rounded h-100 p-4">
+            <h6 class="mb-4">Order</h6>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">OrderId</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Select((x, i) => new { Value = x, Index = i }))
+                    {
+                        <tr>
+                            <th scope="row">@(item.Index + 1)</th>
+                            <td>@item.Value.OrderId</td>
+                            <td>
+                                <a class="btn btn-primary" asp-controller="Order" asp-action="Details" asp-route-OrderId="@item.Value.OrderId">Edit</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+else
+{
+    <div class="card">
+        <div class="card-header">
+            No order created yet
+        </div>
+    </div>
+}

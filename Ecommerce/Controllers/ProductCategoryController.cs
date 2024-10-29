@@ -7,7 +7,6 @@ using NuGet.Protocol.Core.Types;
 
 namespace Ecommerce.Controllers
 {
-    [Authorize(Roles = "Admin")]
     public class ProductCategoryController : Controller
     {
         private readonly IProductCategoryRepository _repository;
@@ -16,17 +15,20 @@ namespace Ecommerce.Controllers
         {
             _repository = repository;
         }
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<IActionResult> Index()
         {
             var model = await _repository.GetAllAsync();
             return View(model);
         }
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult Create() 
         {
             return View();
         }
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> Create(ProductCategoryViewModel model)
         {
@@ -37,8 +39,9 @@ namespace Ecommerce.Controllers
             }
             return View(model);
         }
+        [Authorize(Roles = "Admin")]
         [HttpGet]
-        public async Task<IActionResult> Update(int ProductCategoryId)
+        public async Task<IActionResult> Edit(int ProductCategoryId)
         {
             var productCategory = await _repository.GetByIdAsync(ProductCategoryId);
             var model = new ProductCategoryViewModel()
@@ -50,8 +53,9 @@ namespace Ecommerce.Controllers
             };
             return View(model);
         }
+        [Authorize(Roles = "Admin")]
         [HttpPost]
-        public async Task<IActionResult> Update(ProductCategoryViewModel model)
+        public async Task<IActionResult> Edit(ProductCategoryViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -60,6 +64,7 @@ namespace Ecommerce.Controllers
             }
             return View(model);
         }
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int ProductCategoryId)
         {
             await _repository.DeleteAsync(ProductCategoryId);

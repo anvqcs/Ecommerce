@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System.ComponentModel.DataAnnotations;
 
 namespace Ecommerce.Models.ViewModel.Product
 {
@@ -10,5 +11,6 @@ namespace Ecommerce.Models.ViewModel.Product
         public decimal Price { get; set; }
         public int Stock { get; set; }
         public int ProductCategoryId { get; set; }
+        public IEnumerable<SelectListItem>? Categories { get; set; }
     }
 }

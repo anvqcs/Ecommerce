@@ -1,14 +1,14 @@
 ﻿@model IEnumerable<ProductCategory>
 
 @{
-    ViewBag.Title = "All Users";
+    ViewBag.Title = "Product Category";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 @if (Model.Any())
 {
     <div class="col-12">
         <div class="rounded h-100 p-4">
-            <h6 class="mb-4">All Users</h6>
+            <h6 class="mb-4">Product Category</h6>
             <div class="btn-group" role="group">
                 <a class="btn btn-primary mb-3" style="width:auto" asp-action="Create" asp-controller="ProductCategory">Create New</a>
             </div>
@@ -31,7 +31,7 @@
                             <td>@item.Value.Description</td>
                             <td>@item.Value.Sort</td>
                             <td>
-                                <a class="btn btn-primary" asp-controller="ProductCategory" asp-action="Update" asp-route-ProductCategoryId="@item.Value.ProductCategoryId">Edit</a>
+                                <a class="btn btn-primary" asp-controller="ProductCategory" asp-action="Edit" asp-route-ProductCategoryId="@item.Value.ProductCategoryId">Edit</a>
                                 <span id="confirmDeleteSpan_@item.Value.ProductCategoryId" style="display:none">
                                     <span>Are you sure you want to Delete?</span>
                                     <a class="btn btn-danger" asp-controller="ProductCategory" asp-action="Delete" asp-route-ProductCategoryId="@item.Value.ProductCategoryId">Yes</a>

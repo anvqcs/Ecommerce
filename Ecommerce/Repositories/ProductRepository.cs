@@ -26,7 +26,12 @@ namespace Ecommerce.Repositories
         {
             Product product = new Product()
             {
-                
+                Name = model.Name,
+                Description = model.Description,
+                Price = model.Price,
+                Stock = model.Stock,
+                ProductCategoryId = model.ProductCategoryId,
+                CreatedDate = DateTime.Now
             };
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
@@ -35,7 +40,12 @@ namespace Ecommerce.Repositories
         {
             Product product = new Product()
             {
-
+                ProductId = model.ProductId,
+                Name = model.Name,
+                Description = model.Description,
+                Price = model.Price,
+                Stock = model.Stock,
+                ProductCategoryId = model.ProductCategoryId
             };
             _context.Products.Update(product);
             await _context.SaveChangesAsync();
