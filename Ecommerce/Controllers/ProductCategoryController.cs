@@ -32,7 +32,7 @@ namespace Ecommerce.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _repository.AddProductCategoryAsync(model);
+                await _repository.AddAsync(model);
                 return RedirectToAction(nameof(Index));
             }
             return View(model);
@@ -55,14 +55,14 @@ namespace Ecommerce.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _repository.UpdateProductCategoryAsync(model);
+                await _repository.UpdateAsync(model);
                 return RedirectToAction(nameof(Index));
             }
             return View(model);
         }
         public async Task<IActionResult> Delete(int ProductCategoryId)
         {
-            await _repository.DeleteProductCategoryAsync(ProductCategoryId);
+            await _repository.DeleteAsync(ProductCategoryId);
             return RedirectToAction(nameof(Index));
         }
     }

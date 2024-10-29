@@ -7,8 +7,8 @@ namespace Ecommerce.Repositories
     {
         Task<List<ProductCategory>> GetAllAsync();
         Task<ProductCategory> GetByIdAsync(int id);
-        Task AddProductCategoryAsync(ProductCategoryViewModel model);
-        Task DeleteProductCategoryAsync(int id);
-        Task UpdateProductCategoryAsync(ProductCategoryViewModel model);
+        Task AddAsync(ProductCategoryViewModel model);
+        Task UpdateAsync(ProductCategoryViewModel model);
+        Task DeleteAsync(int id);
     }
 }

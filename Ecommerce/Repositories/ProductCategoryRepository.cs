@@ -12,7 +12,16 @@ namespace Ecommerce.Repositories
         {
             _context = context;
         }
-        public async Task AddProductCategoryAsync(ProductCategoryViewModel model)
+        public async Task<List<ProductCategory>> GetAllAsync()
+        {
+            return await _context.ProductCategories.ToListAsync();
+        }
+
+        public async Task<ProductCategory> GetByIdAsync(int id)
+        {
+            return await _context.ProductCategories!.FindAsync(id);
+        }
+        public async Task AddAsync(ProductCategoryViewModel model)
         {
             var ProductCategory = new ProductCategory()
             {
@@ -25,28 +34,7 @@ namespace Ecommerce.Repositories
             _context.ProductCategories.Add(ProductCategory);
             await _context.SaveChangesAsync();
         }
-
-        public async Task DeleteProductCategoryAsync(int id)
-        {
-            var item = await _context.ProductCategories.FirstOrDefaultAsync(x => x.ProductCategoryId == id);
-            if (item != null) 
-            {
-                _context.ProductCategories.Remove(item);
-                await _context.SaveChangesAsync();
-            }
-        }
-
-        public async Task<List<ProductCategory>> GetAllAsync()
-        {
-            return await _context.ProductCategories.ToListAsync();
-        }
-
-        public async Task<ProductCategory> GetByIdAsync(int id)
-        {
-            return await _context.ProductCategories!.FindAsync(id);
-        }
-
-        public async Task UpdateProductCategoryAsync(ProductCategoryViewModel model)
+        public async Task UpdateAsync(ProductCategoryViewModel model)
         {
             var ProductCategory = new ProductCategory()
             {
@@ -59,6 +47,15 @@ namespace Ecommerce.Repositories
             };
             _context.ProductCategories.Update(ProductCategory);
             await _context.SaveChangesAsync();
+        }
+        public async Task DeleteAsync(int id)
+        {
+            var item = await _context.ProductCategories.FirstOrDefaultAsync(x => x.ProductCategoryId == id);
+            if (item != null)
+            {
+                _context.ProductCategories.Remove(item);
+                await _context.SaveChangesAsync();
+            }
         }
     }
 }
